@@ -7,7 +7,7 @@ from transformers import  get_linear_schedule_with_warmup
 import math
 from time import time
 def replacetext(string):
-    return string.replace("\\","").replace("\n","").replace("URL 0", "")
+    return string.replace("\\","").replace("\n","").replace("URL_0", "")
 class eli5dataset(Dataset):
     def __init__(self, data, num_docs):
         self.data = data
