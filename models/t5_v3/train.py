@@ -28,7 +28,8 @@ trainer = Trainer(
     args=training_args,
     train_dataset=train3,
     eval_dataset= val3,
-    data_collator=T2TDataCollator()
+    data_collator=T2TDataCollator(),
+    callbacks=[CustomLoggingCallback()]
 )
 
 # Training

@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 from rouge_score import rouge_scorer
 import datasets
+from transformers import TrainerCallback
 max_input_length = 512
 max_target_length = 64
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -88,6 +89,13 @@ class T2TDataCollator():
         'labels': lm_labels,
         'decoder_attention_mask': decoder_attention_mask}
 
+class CustomLoggingCallback(TrainerCallback):
+    def on_log(self, args, state, control, logs=None, **kwargs):
+        if logs is not None:
+            print("Custom log information:")
+            for key, value in logs.items():
+                print(f"{key}: {value}")
+            print("=" * 30)
 
 def compute_Rouge_score(predict, reference):
 
