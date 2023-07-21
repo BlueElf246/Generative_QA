@@ -125,7 +125,7 @@ def tokenize(example, tokenizer):
         'input_ids': input_encodings['input_ids'],
         'answer': ". ".join(example['answers'])
     }
-
+    return encodings
 def generate(example, model, tokenizer):
     inputs = torch.LongTensor(example['input_ids']).to(device)
     outputs = model.generate(inputs, do_sample=True, max_length=64)
@@ -134,7 +134,7 @@ def generate(example, model, tokenizer):
     return example
 
 
-def generate_in_use(ques, ctxs, model, tokenizer):
+def generate_in_use(ques, ctxs, model, tokenizer, do_sample):
     inputs = tokenizer(ques, ctxs,
                        max_length=max_input_length,
                        add_special_tokens=True,
@@ -142,7 +142,7 @@ def generate_in_use(ques, ctxs, model, tokenizer):
                        return_attention_mask=True,
                        padding='max_length', return_tensors='pt').input_ids
 
-    outputs = model.generate(inputs, max_length=128, do_sample=True)
+    outputs = model.generate(inputs, max_length=128, do_sample=do_sample)
     answers = tokenizer.decode(outputs[0], skip_special_tokens=True)
     print(ques)
     print(answers)

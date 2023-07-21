@@ -1,9 +1,9 @@
 from utils  import  *
-path_val = "/kaggle/input/eli5-explain-like-i-am-5/ELI5_val.jsonl"
+path_val = "C:/Users/Admin/Downloads/ELI5_val.jsonl"
 dataset_val = load_dataset('json', data_files = path_val)
 val = dataset_val['train']
 
-model_path = "model_3_ans"
+model_path = "C:/Users/Admin/OneDrive/Desktop/jupyter/model_3_ans/checkpoint-8367"
 model = T5ForConditionalGeneration.from_pretrained(model_path)
 tokenizer = T5Tokenizer.from_pretrained("t5-base")
 

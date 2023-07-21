@@ -1,16 +1,11 @@
 from utils import *
-model_path = "model_3_ans"
-model = T5ForConditionalGeneration.from_pretrained(model_path)
+path = "C:/Users/Admin/OneDrive/Desktop/kaggleoutput"
+model_path = "C:/Users/Admin/OneDrive/Desktop/jupyter/model_3_ans/checkpoint-8367"
+model = T5ForConditionalGeneration.from_pretrained(path)
 tokenizer = T5Tokenizer.from_pretrained("t5-base")
 question = 'What is color means?'
-context = "Color is a perceptual property of light that is typically associated with the visual " \
-          "experience of humans and many other animals. It is a result of the interaction between light," \
-          " objects, and the human visual system. Light is made up of electromagnetic waves that travel in " \
-          "different wavelengths. The different wavelengths of light correspond to different colors. " \
-          "When light strikes an object, some wavelengths are absorbed by the object, " \
-          "while others are reflected or transmitted. The wavelengths that are reflected or " \
-          "transmitted are detected by the human eye, which contains specialized cells called cones " \
-          "that are sensitive to different ranges of wavelengths. The human eye has three types of cones: " \
-          "those that are most sensitive to short wavelengths (which we perceive as blue), "
+context = """Color (American English) or colour (Commonwealth English) is the visual perception based on the electromagnetic spectrum. Though color is not an inherent property of matter, color perception is related to an object's light absorption, reflection, emission spectra and interference. For most humans, color are perceived in the visible light spectrum with three types of cone cells (trichromacy). Other animals may have a different number of cone cell types or have eyes sensitive to different wavelength, such as bees that can distinguish ultraviolet, and thus have a different color sensitivity range. Animal perception of color originates from different light wavelength or spectral sensitivity in cone cell types, which is then processed by the brain.
+Colors have perceived properties such as hue, colorfulness (saturation) and luminance. Colors can also be additively mixed (commonly used for actual light) or subtractively mixed (commonly used for materials). If the colors are mixed in the right proportions, because of metamerism, they may look the same as a single-wavelength light. For convenience, colors can be organized in a color space, which when being abstracted as a mathematical color model can assign each region of color with a corresponding set of numbers. As such, color spaces are an essential tool for color reproduction in print, photography, computer monitors and television. The most well-known color models are RGB, CMYK, YUV, HSL and HSV.
+Because the perception of color is an important aspect of human life, different colors have been associated with emotions, activity, and nationality. Names of color regions in different cultures can have different, sometimes overlapping areas. In visual arts, color theory is used to govern the use of colors in an aesthetically pleasing and harmonious way. The theory of color includes the color complements; color balance; and classification of primary colors (traditionally red, yellow, blue), secondary colors (traditionally orange, green, purple) and tertiary colors. The study of colors in general is called color science."""
 
-generate_in_use(question, context, model, tokenizer)
+generate_in_use(question, context, model, tokenizer, False)
